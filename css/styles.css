@@ -43,6 +43,10 @@
    
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--main-font);
     font-weight: 400;
@@ -87,7 +91,7 @@ img {
     overflow: hidden;
 }
 /* ********************************************************************* 
-***************Шапка******************** 
+*************** Шапка ******************** 
 ********************************************************************** */
 
 .page-header {
@@ -163,13 +167,13 @@ img {
     line-height: 1.1;
     letter-spacing: 0.02em;
     color: var(--text-color);
-    fill: var(--text-color);
+    fill: currentColor;
 }
 
 .contact:hover,
 .contact:focus {
     color: var(--accent-color);
-    fill: var(--accent-color);
+    fill: currentColor;
 }
 
 .page-header .contact {
@@ -179,6 +183,11 @@ img {
 
 .page-header .contact-item:not(:last-child) {
     margin-right: 50px;
+}
+
+.contact-item svg {
+    margin-right: 10px;
+    align-items: baseline;
 }
 
 .page {
@@ -468,21 +477,35 @@ align-items: center;
     padding-bottom: 94px;
     background-color: var(--main-bg-color);
 }
+
+.clients-list {
+    display: flex;
+}
+
+.client-item {
+    margin-right: 30px;
+}
+
+.client-item:last-child {
+    margin-right: 0;
+}
+
 .client-link {
-     display: block;
-     width: 170px;
-     height: 92px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    height: 92px;
     padding: 32px, 16px;
-border: 1px solid var(--icon-color);
-border-radius: 4px;
-fill: var(--icon-color);
+    border: 1px solid var(--icon-color);
+    border-radius: 4px;
+    fill: var(--icon-color);
 }
 
 .client-link:hover,
 .client-link:focus {
-fill: var(--accent-color);
-    border: 1px solid var(--accent-color);
-   
+    fill: var(--accent-color);
+    border: 1px solid var(--accent-color);  
 }
 
 
@@ -578,45 +601,6 @@ fill: var(--accent-color);
 
 /* ******************** CVG ******************** */
 
-.contact-item svg {
-    margin-right: 10px;
-    align-items: baseline;
-}
-
-.tel {
-    width: 10px;
-    height: 16px;
-    
-}
-
-.mail {
-    width: 16px;
-    height: 12px;
-}
-
-.client-icon {
-    width: 106px;
-    height: 60px;
-
-}
-
-.client-item {
-    margin-right: 30px;
-  
-}
-.client-item:last-child {
-    margin-right: 0;
-}
-
-.clients-list {
-    display: flex;
-  
-}
-.client-link {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .socials-list {
     display: flex;
@@ -643,9 +627,6 @@ fill: var(--accent-color);
 }
 
 .social-icon{
-    display: block;
-    width: 20px;
-    height: 20px;
     fill: var(--icon-color);
 }
 
@@ -664,3 +645,4 @@ fill: var(--accent-color);
 }
 
 /*  */
+
