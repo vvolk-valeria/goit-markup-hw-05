@@ -16,10 +16,13 @@
     --bg-hero-color: #C4C4C4;
     --accent-color: #2196F3;
     --second-accent-color:#188CE8;
+    --overlay-bg-color:rgba(33, 150, 243, 0.9);
     --socials-bg-color: rgba(255, 255, 255, 0.1);
+    --backdrop-bg-color:rgba(0, 0, 0, 0.2);
     /* border colors */
     --border-color:#EEEEEE;
     --border-header-color:#ECECEC;
+    --border-close-color: rgba(0, 0, 0, 0.1);
     /* shadows */
     --team-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12),
     0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -70,12 +73,6 @@ img {
     max-width: 100%;
     height: auto;
 }
-/* 
-.features .title,
-.portfolio-title {
-    opacity: 0;
-    visibility: hidden;
-} */
 
 .visually-hidden {
     position: absolute;
@@ -158,8 +155,24 @@ img {
     color: var(--accent-color);
 }
 
+.page {
+    color: var(--accent-color);
+}
+
+.line::after {
+    content: "";
+    display: block;
+    background-color: var(--accent-color);
+    width: 48px;
+    height: 4px;
+    border-radius: 2px;
+}
+
+.portfolio.line::after {
+    width: 78px;
+}
+
 .contact {
-    /* display: inline-block; */
     display: flex;
     align-items: center;
     font-weight: 500;
@@ -188,11 +201,6 @@ img {
 .contact-item svg {
     margin-right: 10px;
     align-items: baseline;
-}
-
-.page {
-    color: var(--accent-color);
-    /* border-bottom: 1px solid var(--accent-color); */
 }
 
 /* ********************************************************************* 
@@ -273,7 +281,6 @@ margin-bottom: 20px;
     background-position: center;
     background-size: cover;
     background-color:var(--bg-hero-color);
-    /* background-color: var(--second-bg-color); */
     padding-top: 200px;
     padding-bottom: 200px;
     text-align: center;
@@ -332,54 +339,14 @@ margin-bottom: 20px;
     padding-bottom: 94px;
 }
 
-
-/* ------------- Проба добавления иконок через ::before/::after -------------
-.feature::before {
-    content: "";
-    display: block;
-    margin-bottom: 30px;
-    padding-right: 100px;
-    padding-top: 25px;
-    height: 70px;
-    outline: 1px solid blue;
-    background-color: var(--bg-color);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-image: url(../images/icon/icon-satellite.svg);
-}
-
-.exs::before  {
-    background-image: url(../images/icon/icon-satellite.svg);
- }
-
-.feature:nth-child(1)::before {
-    background-image: url(../images/icon/icon-satellite.svg);
-}
-
-.feature:nth-child(2)::before{
-    background-image: url(../images/icon/icon-clock.svg);
-}
-
-.feature:nth-child(3)::before {
-    background-image: url(../images/icon/icon-diagram.svg);
-}
-
-.feature:nth-child(4)::before {
-    background-image: url(../images/icon/icon-astronaut.svg);
-}
-
---------------- Конец пробы --------------- */
-
 .tumb {
-   height: 120px;
-   padding: 100px, 25px;
+    height: 120px;
+    padding: 100px, 25px;
     margin-bottom: 30px;
-    
     background-color: var(--bg-color);
-display: flex;
-justify-content: center;
-align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .feature-icon {
@@ -389,13 +356,10 @@ align-items: center;
     
 }
 
-.feature .feature-title {
-    font-size: 14px;
-    line-height: 1.1;
-    text-transform: uppercase;
-}
-
 .feature-title {
+    font-size: 14px;
+    line-height: 1.14;
+    text-transform: uppercase;
     margin-bottom: 10px;
 }
 
@@ -421,9 +385,33 @@ align-items: center;
     display: flex;
 }
 
+.service-item {
+    position: relative;
+}
+
 .service-item:not(:last-child) {
     margin-right: 30px;
 }
+
+.service-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 370px;
+    height: 70px;
+    padding-top: 27px;
+    padding-bottom: 27px;
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.14;
+    text-transform: uppercase;
+    text-align: center;
+    background-color: rgba(47, 48, 58, 0.8);
+    color: var(--white-color);
+}
+
+
 /*----------------Наша команда ------------*/
 .employees {
     padding-top: 94px;
@@ -439,7 +427,6 @@ align-items: center;
 .employee-item {
     width: 270px;
     background-color: var(--white-color);
-    /* border: 1px solid var(--text-color); */
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     box-shadow: var(--team-shadow);
@@ -557,7 +544,6 @@ align-items: center;
 
 .work-item {
     width: 370px;
-    /* border: 1px solid var(--border-color); */
 }
 
 .work-link:hover,
@@ -644,5 +630,84 @@ align-items: center;
     fill: var(--main-bg-color);
 }
 
+
+/* ******************** Модальное окно ******************** */
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;    
+    width: 100%;
+    height: 100%;
+    background-color: var(--backdrop-bg-color);
+    
+}
+
+.modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* transform: translate(-50% -50%); */
+    border-radius: 4px;
+    background-color: var(--main-bg-color);
+    box-shadow: var(--team-shadow);
+    width: 530px;
+    height: 580px;
+}
+
+.btn-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--main-bg-color);
+    border-radius: 50%;
+    border: 1px solid var(--border-close-color);
+    cursor: pointer;
+}
+
+.modal-close {
+    content: "";
+    width: 100%;
+    height: 100%;
+   
+}
+
+.is-hidden {
+    opacity: 0;
+    pointer-events: none;
+    visibility:hidden;
+}
+
+
 /*  */
 
+.card {
+    position: relative;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--overlay-bg-color);
+    width: 100%;
+    height: 100%;
+    padding-left: 24px;
+    padding-right: 24px;
+    padding-top: 63px;
+    
+    opacity: 0;
+}
+
+.work-link:hover .overlay {
+    opacity: 1;
+}
+
+.overlay-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.55;
+    color: var(--white-color);
+}
