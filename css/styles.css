@@ -159,17 +159,20 @@ img {
     color: var(--accent-color);
 }
 
-.line::after {
-    content: "";
-    display: block;
-    background-color: var(--accent-color);
-    width: 48px;
-    height: 4px;
-    border-radius: 2px;
+.nav-item {
+    position: relative;
 }
 
-.portfolio.line::after {
-    width: 78px;
+.page::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    display: block;
+    background-color: var(--accent-color);
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
 }
 
 .contact {
@@ -667,11 +670,14 @@ margin-bottom: 20px;
     cursor: pointer;
 }
 
+.btn-close:hover .modal-close{
+    fill: var(--accent-color);
+}
+
 .modal-close {
-    content: "";
     width: 100%;
     height: 100%;
-   
+    fill: var(--logo-dark-color);
 }
 
 .is-hidden {
